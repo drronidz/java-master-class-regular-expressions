@@ -105,6 +105,53 @@ public class Main {
         while (h2TextMatcher.find()) {
             System.out.println("Occurrence: " + h2TextMatcher.group(2));
         }
+        System.out.println("-----------------------------------------------------------\n");
+        // "abc" "a" and "b" and "c"
+        // [[Hh]arry
+        System.out.println("harry".replaceAll("[H|h]arry", "Larry"));
+        System.out.println("Harry".replaceAll("[H|h]arry", "Larry"));
+
+        // [^abc]
+        String tvTest = "tstvtkt";
+//        String tNotVRegExp = "t[^v]";
+        String tNotVRegExp = "t(?!v)";
+        Pattern tNotVPattern = Pattern.compile(tNotVRegExp);
+        Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
+
+        count = 0;
+        while (tNotVMatcher.find()) {
+            count++;
+            System.out.println("Occurrence " + count + " : " + tNotVMatcher.start() + " to " + tNotVMatcher.end());
+        }
+
+        System.out.println("-----------------------------------------------------------\n");
+        // t(?=v)
+        // ^([\(]{1}[0-9]{3}[\)]{1}[ ]{1}[0-9]{3}[\-]{1}[0-9]{4})$
+
+        String phoneOne = "1234567890"; // Shouldn't match
+        String phoneTwo = "(123) 456-7890"; // Should match
+        String phoneThree = "123 456-7890"; // Shouldn't match
+        String phoneFour = "(123)456-7890"; // Shouldn't match
+
+        System.out.println("phoneOne = " + phoneOne.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phoneTwo = " + phoneTwo.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phoneThree = " + phoneThree.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phoneFour = " + phoneFour.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+
+        System.out.println("-----------------------------------------------------------\n");
+
+        //^4[0-9]{12}([0-9]{3})?$
+
+        String visaOne = "4444444444444"; // should match
+        String visaTwo = "5444444444444"; // shouldn't match
+        String visaThree = "4444444444444444";  // should match
+        String visaFour = "4444";  // shouldn't match
+
+        System.out.println(" visaOne " + visaOne.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println(" visaTwo " + visaTwo.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println(" visaThree " + visaThree.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println(" visaFour " + visaFour.matches("^4[0-9]{12}([0-9]{3})?$"));
+
 
 
     }
