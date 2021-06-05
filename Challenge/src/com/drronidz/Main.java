@@ -50,5 +50,37 @@ public class Main {
         String challengeSeven = "abcd.135";
         System.out.println(challengeSeven.matches("[A-z][a-z]+\\.\\d+$"));
 
+        String challengeEight = "abcd.135uvqz.7tzik.999";
+        Pattern patternEight = Pattern.compile("[A-Za-z]+\\.(\\d+)");
+        Matcher matcherEight = patternEight.matcher(challengeEight);
+
+        while (matcherEight.find()) {
+            System.out.println("Occurrence: " + matcherEight.group(1));
+        }
+        String challengeNine = "abcd.135\tuvqz.7\ttzik.999\n";
+        Pattern patternNine = Pattern.compile("[A-Za-z]+\\.(\\d+)\\s");
+        Matcher matcherNine = patternNine.matcher(challengeNine);
+        while (matcherNine.find()) {
+            System.out.println("Occurrence: " + matcherNine.group(1));
+        }
+
+        String challengeTen = "abcd.135\tuvqz.7\ttzik.999\n";
+        Pattern patternTen = Pattern.compile("[A-Za-z]+\\.(\\d+)\\s");
+        Matcher matcherTen = patternTen.matcher(challengeTen);
+        while (matcherTen.find()) {
+            System.out.println("Occurrence: start = " + matcherTen.start(1) + " end = " + (matcherTen.end(1) - 1));
+        }
+        System.out.println("------------------------------------------------------");
+//        String challengeEleven = "{0, 2}, {0, 5}, {1, 3}, {2, 4}";
+        String challengeEleven = "{0, 2}, {0, 5}, {1, 3}, {2, 4} {x, y}, {5, 6}, {11, 15}";
+//        Pattern patternEleven = Pattern.compile("\\{(.+?)\\}");
+        Pattern patternEleven = Pattern.compile("\\{(\\d+, \\d+)\\}");
+        Matcher matcherEleven = patternEleven.matcher(challengeEleven);
+        while (matcherEleven.find()) {
+            System.out.println("Occurrence: " + matcherEleven.group(1));
+        }
+
+
+
     }
 }
