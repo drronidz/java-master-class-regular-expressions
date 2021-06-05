@@ -80,7 +80,15 @@ public class Main {
             System.out.println("Occurrence: " + matcherEleven.group(1));
         }
 
+        System.out.println("------------------------------------------------------");
+        String challengeTwelve = "11111";
+        System.out.println(challengeTwelve.matches("^\\d{5}$"));
 
+        System.out.println("------------------------------------------------------");
+        String challengeThirteen = "11111-1111";
+        System.out.println(challengeThirteen.matches("^\\d{5}-\\d{4}$"));
+
+        System.out.println("------------------------------------------------------");
 
     }
 }
